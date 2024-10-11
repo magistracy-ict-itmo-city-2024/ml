@@ -80,5 +80,5 @@ def detection(model, pic):
         labels = [] 
         for i in response:
               if i['score'] > 0.7:
-                     labels.append(i)
+                     labels.append(i["label"])
         return list(set(labels))
