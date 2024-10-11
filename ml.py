@@ -5,7 +5,6 @@ from googletrans import Translator
 import random
 
 
-
 def translate_text(text, target_language='en'):
     translator = Translator()
     translation = translator.translate(text, dest=target_language)
@@ -49,7 +48,7 @@ def get_response(token, inputs, labels, category_id):
         #обработка результатов модели
         client_nlp = InferenceClient(token=token)
         params = {"candidate_labels": candidate_labels}
-        response = client_nlp.post(json={"inputs": inputs, "parameters": params}, model="typeform/distilbert-base-uncased-mnli")
+        response = client_nlp.post(json={"inputs": description, "parameters": params}, model="typeform/distilbert-base-uncased-mnli")
         response = response.decode()
         response = json.loads(response)
         
