@@ -1,19 +1,17 @@
 # from dto import IssueDto
 from huggingface_hub import InferenceClient
 import json
-from googletrans import Translator
 import random
 
 
-def translate_text(text, target_language='en'):
-    translator = Translator()
-    translation = translator.translate(text, dest=target_language)
-    return translation.text
+def translate_text(text, token):
+    translator = InferenceClient(model = "facebook/wmt19-ru-en", token = token)
+    return translator.translation(text)
 
 
 def get_response(token, inputs, labels, category_id):
         #обработка языка
-        description = translate_text(inputs)
+        description = translate_text(inputs, token)
 
         #допустим до этого пришел какой-то коэфф доверия (его нет в MVP)
         coeff = round(random.uniform(0.9, 1), 2)
