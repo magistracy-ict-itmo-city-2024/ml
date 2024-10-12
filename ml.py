@@ -54,13 +54,13 @@ def get_response(token, inputs, labels, category_id):
         pred_label, pred_score = response['labels'][0], response['scores'][0]
 
         if (pred_label == "trash" or pred_label == "situation with trash") and category_id == 1 and pred_score > 0.7:
-                return coeff  
+                return 1.0  
         elif  (pred_label == "accident" or pred_label == "danger") and category_id == 3 and pred_score > 0.7:
-                return coeff
+                return 1.0 
         elif  pred_label == "bad weather" and category_id == 2 and pred_score > 0.7:
-                return coeff
+                return 1.0 
         elif  (pred_label == "renovation work" or pred_label == "city problems") and category_id == 4 and pred_score > 0.7:
-                return coeff
+                return 1.0 
         else:
                 return coeff - 0.1
     
