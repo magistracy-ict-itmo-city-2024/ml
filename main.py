@@ -6,7 +6,7 @@ import ml
 from dto import IssueDto, ResponseDto
 
 app = FastAPI()
-BASE_URL = "https://city24.civiltechgroup.ru/"
+BASE_URL = "http://backend:8080/"
 env = environ.Env()
 environ.Env.read_env()
 
