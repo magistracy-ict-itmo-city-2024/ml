@@ -17,6 +17,8 @@ class IssueDto(BaseModel):
     documentPath: Optional[str]
     contentType: Optional[str]
     actualityStatus: str = None
+    isDescriptionByVoice: bool
+    voiceDescriptionId: int
 
 
 class ResponseDto(BaseModel):

@@ -2,6 +2,7 @@
 from huggingface_hub import InferenceClient
 import json
 import random
+import whisper
 
 
 def translate_text(text, token):
@@ -80,3 +81,10 @@ def detection(model, pic):
               if i['score'] > 0.7:
                      labels.append(i["label"])
         return list(set(labels))
+
+def get_description(audio_path):
+        # Загрузка модели Whisper
+        model = whisper.load_model("base")
+        # Загрузка аудио и преобразование в текст
+        result = model.transcribe(audio_path)
+        return result["text"]
